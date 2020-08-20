@@ -16,3 +16,10 @@
     </div>
 </div>
 @endsection
+
+@push('script')
+    <script>
+        window.action = "browse"
+    </script>
+@endpush
+

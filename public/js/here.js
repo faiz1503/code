@@ -115,9 +115,33 @@ if (navigator.geolocation) {
                         })
                     })
                 )
-            }
+            })
         }
 
+        function clearSpace(){
+            map.removeObjects(spaces);
+            spaces = [];
+        }
+
+        function init(latitude, longitude, radius){
+            clearSpace();
+            fetchSpaces(latitude, longitude, radius)
+            .then(function() {
+                map.addObjects(spaces);
+            });
+        }
+
+        if (window.action == 'browse'){
+            map.addEventListener('dragend', function(ev){
+                let resultCoord = map.screenToGeo(
+                    ev.currentPointer.viewportX,
+                    ev.currentPointer.viewportY
+                );
+                init(resultCoord.lat, resultCoord.lng, 40)
+            }, false);
+
+            init(objLocalCoord.lat, objLocalCoord.lng, 40)
+        }
     })
 } else {
     console.error("Geolocation is not Supported by this browser!");
