@@ -1,0 +1,9 @@
+*membuat form create space
+(error)
+-pada form lupa :: ex: form::text
+-pada form close lupa ()
+
+*instalasi here maps untuk create space
+(error)
+-pada tulisan default;ayer, terbuat huruf besar D nya
+-file here.js salah dimasukkan, harus nya di folder public->js
